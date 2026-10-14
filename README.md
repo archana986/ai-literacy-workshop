@@ -17,9 +17,9 @@ More install detail: [SETUP.md](SETUP.md).
 
 **Goal:** grants and import are done, and one Run All proves the room works.
 
-1. Complete **[ADMIN_CHECKLIST.md](ADMIN_CHECKLIST.md)** (catalog rights, **model access**, warehouse, optional PII group, import notebooks + `assets/` as **FILE**).
+1. Complete **[ADMIN_CHECKLIST.md](ADMIN_CHECKLIST.md)** (catalog rights, **model access**, warehouse, optional PII group, bring the workshop into the workspace with a **Git folder** or the **zip Import**).
 2. Open notebook **`admin_setup`** in the workshop folder.
-3. Set widgets (catalog, **LLM model**, warehouse participants will use). **Run All**.
+3. Run the **first code cell (Step 0)**; a widget bar appears at the top of the notebook. Set catalog, **LLM model**, and warehouse to the values participants will use. **Run All**.
 4. Confirm: diagram assets are FILE, preflight PASS. Optional: Run All on Lab 1 once.
 5. Share the folder path with participants. They start at **`00_start_here`** only.
 
@@ -40,7 +40,7 @@ If preflight says Unity Gateway / model service is unavailable, use the **legacy
 
 1. Open the workshop folder your admin shared.
 2. Open **`00_start_here`** (not `admin_setup`).
-3. Set widgets: `catalog`, `schema` (blank = auto), `llm_endpoint` (UC FQN **or** legacy endpoint), `warehouse_name`. Run through preflight.
+3. Run the **first code cell (Step 0)**; a widget bar appears at the top of the notebook. Set `catalog`, `schema` (blank = auto), `llm_endpoint` (UC FQN **or** legacy endpoint), `warehouse_name`, then **Run All** through preflight. Your values are saved, so Labs 1 to 5 open with them.
 4. Run All on **`01_setup_governed_data`** → **`02_build_agent`** → **`03_evaluate_and_fix`**.
 5. Optional: **`04_genie_fallback`**, then fill the ideation canvas image.
 6. Run **`05_from_lab_to_real_agent`** (wrap-up: what `_agent_core` is, and what changes next).

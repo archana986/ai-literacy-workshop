@@ -33,10 +33,11 @@ You can paste this whole file into email. Detail and CLI examples also live in [
 
 5. Confirm a **SQL warehouse** exists for optional Genie. Grant every participant `CAN USE` on that warehouse.
 6. (Presenter / PII demo only) Create an **account group** for unmasked names (example name: `lab_pii_viewers`). Add only people who should see full names in the demo. Attendees are usually **not** in this group.
-7. Put the lab notebooks in the workspace where people will run them:
-   - Import everything under `src/notebooks/` into one folder (example: `/Workspace/Users/<you>/AI-Literacy-Workshop` or a shared Users/Shared path).
-   - Import PNGs from `src/notebooks/assets/` into `<that-folder>/assets/` as workspace **FILE** objects (not notebooks).
-8. Smoke-test once yourself: open notebook **`admin_setup`**, set widgets (including the model value from step 4), Run All. Confirm diagram assets are FILE and preflight PASS. Optional: Run All on Lab 1 once. (PII group may WARN if you are not in the group; that is OK.)
+7. Bring the workshop into the workspace where people will run it (pick one; both bring the notebooks **and** the `assets/*.png` diagrams):
+   - **Git folder:** Workspace > Create > Git folder > paste the repo URL above.
+   - **Zip:** Workspace > right-click a folder > Import > choose the workshop zip.
+   Notebooks land in `src/notebooks/`; diagrams in `src/notebooks/assets/` as **FILE** objects.
+8. Smoke-test once yourself: open notebook **`admin_setup`**. Run the **first code cell (Step 0)**; a widget bar appears at the top of the notebook; set catalog, the model value from step 4, and warehouse. Then **Run All**. Confirm diagram assets are FILE and preflight PASS. Optional: Run All on Lab 1 once. (PII group may WARN if you are not in the group; that is OK.)
 9. **Before class (UI dry-run):** Click through AI Playground tool attach and open a Genie space once. UI labels change; if “Hosted function” or the Genie URL shape differs, note the current clicks for the room.
 
 You do **not** create each attendee’s schema, seed data, or agent. Each user creates **their own schema** when they run Lab 1.
@@ -44,7 +45,7 @@ You do **not** create each attendee’s schema, seed data, or agent. Each user c
 ## What participants do (after you finish)
 
 1. Open the shared folder (or their copy of the notebooks).
-2. Open **`00_start_here`** (not the admin setup notebook), set widgets (catalog, their schema or blank for auto, LLM model, warehouse).
+2. Open **`00_start_here`** (not the admin setup notebook), run the **first code cell (Step 0)**; a widget bar appears at the top of the notebook; set catalog, their schema (or blank for auto), LLM model, and warehouse. Values are saved for the later labs.
 3. Run All through Labs 1–3. Optional: Lab 4 (Genie). Then Lab 5 (path from lab to a real agent).
 
 Full participant steps: [README.md](README.md) → **Participant path**.
@@ -77,7 +78,8 @@ Full participant steps: [README.md](README.md) → **Participant path**.
 | Preflight fails on catalog/schema | Missing `USE CATALOG` or `CREATE SCHEMA` |
 | Preflight fails on `system.ai…` / Gateway | Gateway not enabled or preview off → switch widget to **legacy endpoint** + `CAN QUERY` |
 | Preflight fails on legacy endpoint | Wrong endpoint name or missing `CAN QUERY` |
-| Diagrams do not show | PNGs imported as notebooks; re-import as FILE into `assets/` |
+| Diagrams do not show | `assets/` missing or PNGs imported as notebooks; re-import via Git folder or zip Import |
+| No widget bar | Run the **first code cell (Step 0)** of that notebook; widgets are created there, not in `_config` |
 | Mask/filter demo odd for presenter | Presenter not in (or incorrectly in) the PII group |
 | Tool-loop fails on one model | Switch `llm_endpoint` to another chat model (default Llama often works); any chat model with working tools is fine |
 

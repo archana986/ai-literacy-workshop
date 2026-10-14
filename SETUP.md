@@ -29,26 +29,17 @@ After import, open **`admin_setup`** and Run All before class. Participants star
 
 ## Admin: import into the workspace
 
-1. Create a workspace folder (for example `/Workspace/Users/<you>/AI-Literacy-Workshop` or a shared path).
-2. Import every notebook under `src/notebooks/` (includes `admin_setup` plus Labs 00–05).
-3. Import PNGs under `src/notebooks/assets/` as workspace **FILE** objects into `<your-folder>/assets/` (same parent as the notebooks).
+Pick one. Both bring the notebooks **and** the `assets/*.png` diagrams as workspace **FILE** objects:
 
-Example with Databricks CLI (notebooks):
+- **Git folder (recommended):** Workspace > Create > Git folder > paste the repo URL. Notebooks land in `src/notebooks/`.
+- **Zip:** Workspace > right-click a folder > Import > choose the workshop zip.
+- **CLI:** `databricks workspace import-dir src/notebooks /Workspace/Users/<you>/AI-Literacy-Workshop --profile YOUR_PROFILE --overwrite`
 
-```bash
-databricks workspace import-dir src/notebooks /Workspace/Users/<you>/AI-Literacy-Workshop \
-  --profile YOUR_PROFILE --overwrite
-```
-
-If PNGs were imported as notebooks by mistake, delete them and re-import so `object_type` is `FILE` under `.../assets/`.
-
-Notebooks load lab diagrams with `show_diagram(...)` from `_config`, which resolves `/Workspace/.../assets/` next to the notebook.
-
-Docs: [Images in notebooks](https://learn.microsoft.com/en-us/azure/databricks/notebooks/notebook-media)
+Notebooks load lab diagrams with `show_diagram(...)` from `_config`, which resolves `/Workspace/.../assets/` next to the notebook. If diagrams do not show, check that `assets/` holds 7 PNGs as FILE (not notebooks).
 
 ## Participant: widgets
 
-Set these on `00_start_here` after `%run ./_config` (change anytime, then re-run from config):
+Each lab notebook creates its own **widget bar** in its first code cell (**Step 0**). Run that cell, set the values in the bar at the top, then Run All. `_config` only reads the values (a `%run` notebook cannot add widgets to its caller) and saves them to `/Workspace/Users/<you>/ai_literacy_lab_settings.json`, so later labs open with the same values. Change any widget, then re-run from the config cell.
 
 | Widget | Purpose |
 |---|---|
