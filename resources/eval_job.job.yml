@@ -1,0 +1,14 @@
+resources:
+  jobs:
+    ai_literacy_eval_gate:
+      name: ai-literacy-eval-gate
+      description: Exhibit job. Runs the evaluate-and-fix notebook as an eval-as-a-gate example. Room demo is still notebook Run All.
+      tasks:
+        - task_key: evaluate_and_fix
+          notebook_task:
+            notebook_path: ../src/notebooks/03_evaluate_and_fix.ipynb
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+              llm_endpoint: ${var.llm_endpoint}
+              run_demos: "true"

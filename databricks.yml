@@ -1,0 +1,23 @@
+bundle:
+  name: ai-literacy-workshop
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Unity Catalog for the lab (portable default main; set for your workspace)
+    default: main
+  schema:
+    description: Schema created by Lab 1
+    default: ai_literacy_2a
+  llm_endpoint:
+    description: LLM model — UC model service FQN (system.ai…) or legacy serving endpoint name
+    default: databricks-meta-llama-3-3-70b-instruct
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      root_path: /Workspace/Users/${workspace.current_user.userName}/AI-Literacy-Workshop
